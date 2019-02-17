@@ -1,4 +1,3 @@
-import msvcrt
 class Node:
     def __init__(self,value):
         self.info = value
@@ -116,8 +115,6 @@ while True:
 
     if opt == 1:
         list.displayList()
-        print("\nPress any key to continue")
-        #msvcrt.getch()
     elif opt == 2:
         print(f"list contain {list.countNodes()} nodes")
     elif opt == 3:
