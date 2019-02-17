@@ -1,0 +1,177 @@
+import msvcrt
+class Node:
+    def __init__(self,value):
+        self.info = value
+        self.next = None
+        self.prev = None
+class DoublyLinkedList:
+    def __init__(self):
+        self.start = None
+    def displayList(self):
+        if self.start == None:
+            print("List is Empty")
+        else:
+            cur = self.start
+            while cur is not None:
+                print(cur.info)
+                cur = cur.next
+    def countNodes(self):
+        cur = self.start
+        count = 0
+        if cur is None:
+            print("List is empty")
+        else:
+            while cur:
+                count += 1
+                cur = cur.next
+            return count
+    def search(self,data):
+        cur = self.start
+        position = 0
+        while cur:
+            position +=1
+            if cur.info == data:
+                return position
+            cur = cur.next
+        else:
+            return False
+    
+
+    def insertInBeginning(self,data):
+        new_node = Node(data)
+        if self.start is None:
+            self.start = new_node
+        else:
+            cur = self.start
+            self.start = new_node
+            new_node.next = cur
+    def insertAtEnd(self,data):
+        new_node = Node(data)
+        if self.start is None:
+            self.start = new_node
+        else:
+            cur = self.start
+            while cur.next:
+                cur = cur.next
+            cur.next = new_node
+            new_node.prev = cur
+            new_node.next = None
+
+    def insertAfter(self,data,x):
+        if self.start is None:
+            return
+        else:
+            cur = self.start
+            while cur:
+                if cur.info == x:
+                    new_node = Node(data)
+
+                cur = cur.next
+
+        
+    def insetAtPosition(self,data,k):
+        pass        
+    def deleteFirstNode(self):
+        pass
+    def deleteLastNode(self):
+        pass
+    def deleteNode(self,data):
+        pass
+    def reverseList(self):
+        pass
+    def bubbleSort(self):
+        pass
+    def insertCycle(self,data):
+        pass
+    def hasCycle(self):
+        pass
+    def removeCycle(self):
+        pass
+    
+
+    
+
+list = DoublyLinkedList()
+
+while True:
+
+    print("1. Display List")
+    print("2. Count Number of nodes")
+    print("3. Search for an element")
+    print("4. Insert in beginning of the list")
+    print("5. Insert a node at the end of the list")
+    print("6. Insert a node after specific node")
+    print("7. Insert a node at a given position")
+    print("8. Delete fisrt node")
+    print("9. Delete last node")
+    print("10. Delete any node")
+    print("11. Reverse the list")
+    print("12. Sort in accending order")
+    print("13. Insert Cycle")
+    print("14. Cheak for cycle")
+    print("15. Remove Cycle")
+    print("16. Quit")
+    
+    opt = int(input("\nSelect Your Choice: "))
+
+    if opt == 1:
+        list.displayList()
+        print("\nPress any key to continue")
+        #msvcrt.getch()
+    elif opt == 2:
+        print(f"list contain {list.countNodes()} nodes")
+    elif opt == 3:
+        data = int(input("Enter the element you want to search: "))
+        if list.search(data) == False:
+            print(f"{data} is not present in list")
+        else:
+           print(f"{data} is present at {list.search(data)} position")
+
+    elif opt == 4:
+        data = int(input("Enter the element to bo inserted: "))
+        list.insertInBeginning(data)
+    elif opt == 5:
+        data = int(input("Enter the element to be inserted: "))
+        list.insertAtEnd(data)
+    elif opt == 6:
+        x = int(input("Enter the element after which to insert: "))
+        if list.search(x) == False:
+            print(f"{x} is not present in list")
+        else:
+            data = int(input("Enter the element to be inserted: "))
+            list.insertAfter(data,x)
+    elif opt == 7:
+        k = int(input("Enter the position at which to insert: "))
+        if list.countNodes() == 0:
+            print("Invalid Position")
+        elif k > list.countNodes() + 1:
+            print("Invalid Position")
+        else:
+            data = int(input("Enter the element to be inserted: "))
+            list.insetAtPosition(data,k)
+    elif opt == 8:
+        list.deleteFirstNode()
+    elif opt == 9:
+        list.deleteLastNode()
+    elif opt == 10:
+        data = int(input("Enter the element to be deleted: "))
+        list.deleteNode(data)
+    elif opt == 11:
+        list.reverseList()
+    elif opt == 12:
+        list.bubbleSort()
+    elif opt == 13:
+        data = int(input("Enter the element at which the cycle has to be inserted: "))
+        list.insertCycle(data)
+    elif opt == 14:
+        if list.hasCycle():
+            print("List has a cycle")
+        else:
+            print("List does not have a cycle")
+    elif opt == 15:
+        list.removeCycle()
+    elif opt == 16:
+        break    
+    else:
+        print("Wrong Option")
+    print()
